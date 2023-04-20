@@ -22,7 +22,7 @@ const routes: Routes = [
   // {path:'meals',component: MealsComponent},
   // {path:'meals/:mealId',component:SinglemealComponent},
   
-  {path:'users' , component : UsersComponent},
+  {path:'users' , component : UsersComponent,data:{isAdmin :true}},
   {path:'registrat' , component :RegistratComponent},
   {path:'cart' , component : CartComponent},
   {path:"**" , component : ErrorpageComponent},

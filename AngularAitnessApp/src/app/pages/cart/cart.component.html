@@ -1,12 +1,26 @@
-<p>cart works!</p>
-<!-- <div class="col-12 col-md-4" *ngFor="let item of meals">
-
-    <div class="row">
-      <div class="col-8">
-          <div class="alert alert-info">
-            <h3>{{item.mealName}}</h3>
-            <p>{{item.meal}}</p>
+<div class="container ">
+<div class=" flex-column">
+    <div class="card  mb-5  " style="width: 40%;background-color: cadetblue;  "  *ngFor="let item of mealsArray">
+        <div class="card">
+          <img src={{item.image}} class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-5">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{item.title}}</h5>
+            <h3 class="card-text">{{item.price | currency : "EGP" : "symbol" }}</h3>
+            <p>{{item.content}}</p>
+            <a class="btn btn-danger " (click)="deleteMeal($event)">Remove meal</a>
+  
           </div>
+        </div>
       </div>
     </div>
-</div> -->
+    <button
+    type="button"
+    class="btn btn-dark"
+    routerLink="/users"
+  >
+  Order confirmation
+  </button>
+</div>
+ 

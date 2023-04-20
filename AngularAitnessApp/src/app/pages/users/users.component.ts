@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
 import { GlobalService } from 'src/app/services/global.service';
 
@@ -13,22 +13,24 @@ export class UsersComponent {
   model : User ={
     email:'',
     password:'',
-    // address :{
-    //   city:'',
-    //   country:''
-    // }
+    
   }
 
-  // modelData = {
-  //   email : 'nehal.helal777@gmail.com',
-  //   password : '1234567',
-  //   address : {
-  //     city : '',
-  //     country : '' 
-  //   }
-  // }
   msgError = null
-  constructor(private global : GlobalService , private router : Router){}
+  isAdmin:any
+  constructor(private global : GlobalService , private router : Router, private Activatedroute: ActivatedRoute){
+// *********************
+    this.Activatedroute.data.subscribe(res => {
+      console.log(res)
+        this.isAdmin = res['isAdmin']
+        if(this.isAdmin == 'false') 
+        console.log(this.isAdmin)
+    })
+// ****************************
+
+
+
+  }
   handleSubmit(form : NgForm){
     console.log(form)
     if(form.valid){

@@ -14,8 +14,8 @@
             <!-- <h3> id :{{singlemeal?._id}}</h3> -->
             <h1>{{singlemeal?.price|currency:"EGP":"symbol"}}</h1>
             <p>{{singlemeal?.content}}</p>
-            <a href="cart" class="btn btn-dark">Add to cart</a>
-        
+             <a class="btn btn-danger" (click)="handleClick(singlemeal)">Add To Cart</a>
+           
         </div>
     </div>
     <!-- to get last item =-3 -->

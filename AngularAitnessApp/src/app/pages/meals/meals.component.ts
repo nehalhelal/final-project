@@ -21,6 +21,7 @@ export class MealsComponent {
   ngOnInit(){
     console.log("ng on init")
   }
+  
 
 
   // ********************

@@ -48,8 +48,35 @@ export class SinglemealComponent {
   
         })
 
+       
+
   
     }
+
+
+
+     // **********cart*************
+    //  mealsArray :any = []
+    //  handleClick(data:any){
+    //   this.mealsArray.push(data)
+    //   let oldCart =JSON.stringify(this.mealsArray)
+    //   localStorage.setItem('cart',oldCart)
+    //  }
+
+    //  **********************
+    mealsArray : any = []
+    handleClick(data: any) {
+  
+      this.mealsArray.push(data)
+  
+      let oldCart = JSON.stringify(this.mealsArray)
+  
+  
+      localStorage.setItem('cart' , oldCart)
+    }
+  
+
+
   
     
 }
