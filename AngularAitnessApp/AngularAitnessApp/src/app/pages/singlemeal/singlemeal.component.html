@@ -1,0 +1,27 @@
+<div class="container">
+
+<br><br><br><br><br>
+<div class="row">
+    <div class="col-8">
+        <!-- <div class="alert alert-info"> -->
+            <div class="card" style="width: 25rem; background-color: cadetblue;">
+                <!-- {{singlemeal.images}} -->
+                <!-- ?- if it null  all it  -->
+                <div class="card">
+                <img class="card-img-top"src="{{singlemeal?.image }}" class="card-top-img" />
+            </div>
+            <h2>{{singlemeal?.title}}</h2>
+            <!-- <h3> id :{{singlemeal?._id}}</h3> -->
+            <h1>{{singlemeal?.price|currency:"EGP":"symbol"}}</h1>
+            <p>{{singlemeal?.content}}</p>
+            <a href="cart" class="btn btn-dark">Add to cart</a>
+        
+        </div>
+    </div>
+    <!-- to get last item =-3 -->
+    <div class="col-4">
+        <h3 style="color: cadetblue;cursor: grab;">Latest meals</h3>
+        <div style="cursor: grab; background-color: cadetblue;" class="alert alert-info" *ngFor="let item of meals | slice : -3" routerLink="/meals/{{item._id}}"> <h3>{{item.title}}</h3></div>
+    </div>
+</div>
+</div>
