@@ -1,78 +1,130 @@
 <p>registrat works!</p>
-<div class="container" >
-    <div class="alert alert-danger" *ngIf="msgError">
-        {{msgError}}
-    </div>
-    
-    <form #loginform="ngForm" (ngSubmit)="handleSubmit(loginform)" >
-        <!-- ****this validation for all form*** -->
-        <!-- <div class="alert alert-primary">
-            <h5>values : {{loginform.value | json }}</h5>
-            <h5>touched : {{loginform.touched }}</h5>
-            <h5>valid : {{loginform.valid }}</h5>
-            <h5>invalid : {{loginform.invalid }}</h5>
-            <h5>submit : {{loginform.submitted }}</h5>
-        </div> -->
-        <div class="row gy-4 mt-4">
-            <div class="col-12 col-6">
-                <input type="email" placeholder="enter Email" class="form-control"
-                 [(ngModel)]="model.email" name="email" #email="ngModel" required email minlength="5">
-                 <!-- ****vaildation for every element**** -->
-                 <!-- <div class="alert alert-danger">
-                  <h6>{{email.errors | json}} </h6> 
-                  <h6>touched : {{email.touched}} </h6> 
-                  <h6>valid :{{email.valid}} </h6> 
-                  <h6>invalid :{{email.invalid}} </h6> 
-                  <h6>dirty :{{email.dirty}} </h6> 
-                 </div> -->
-                 <div class="alert alert-danger" *ngIf="loginform.submitted && email.invalid">
-                    <div *ngIf="email.errors?.['required']">Email is required</div>
-                    <div *ngIf="email.errors?.['email']">Invalid Email</div>
-                    <div *ngIf="email.errors?.['minlength']">min length = 5</div>
-                 </div>
-            </div>
-    
-            <div class="col-12 col-6">
-                <input type="password" placeholder="enter password" class="form-control"
-                [(ngModel)]="model.password" name="password" #password="ngModel"
-                 required (input)="msgError = null" >
-                <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || loginform.submitted )">
-                    <div *ngIf="password.errors?.['required']">password is required</div>
-                </div>
-            </div>
-    
-            <!------------ Password with pattern -------------->
-            <!-- <div class="col-12 col-6">
-                <input type="password" placeholder="enter password" class="form-control"
-                [(ngModel)]="model.password" name="password" #password="ngModel"
-                 required  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-                <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || loginform.submitted )">
-                    <div *ngIf="password.errors?.['required']">password is required</div>
-                    <div *ngIf="password.errors?.['pattern']">Match the pattern</div>
-                </div>
-            </div> -->
-              <!-- ****addind new element not only in login**** -->
-            <!--------------------- Address Oject -------------------------------->
-            <!-- <div ngModelGroup="address">
-                <div class="col-12 col-md-4">
-                    <input type="text" placeholder="city" name="city" ngModel>
-                </div>
-                <div class="col-12 col-md-4">
-                    <input type="text" placeholder="country" name="country" ngModel >
-                </div>
-            </div> -->
-    
-            <div class="col-12 col-6">
-                <button class="btn btn-primary">registrat</button>
-            </div>
+<h2>register</h2>
+
+<div class="alert alert-danger" *ngIf="msgError">
+    {{msgError}}
+</div>
+
+<form #registerform="ngForm" (ngSubmit)="handleSubmit(registerform)" >
+    <div class="row gy-4 mt-4">
+
+                                           
+        <!--fname---------------------------------------------------------------->
+        <div class="col-12 col-6">
+            <input type="text" placeholder="frist name" class="form-control" 
+            [(ngModel)]="model.fname" name="fname" #fname="ngModel" 
+            required minlength="2" maxlength="10">
         </div>
-    </form>
-    
-    
-    <div class="col-12 col-6">
-        <br>
-        <br>
-        <p style="color:red"> if you dont have account .please signup</p>
-        <button class="btn btn-danger">Registrat</button>
+        <!-- divERR-fname -->
+        <div class="alert alert-danger" *ngIf="registerform.submitted && fname.invalid ">
+            <div *ngIf="fname.errors?.['required']">frist name is required</div>
+            <div *ngIf="fname.errors?.['minlength']">min length = 3</div>
+            <div *ngIf="fname.errors?.['maxlength']">min length = 10</div>
+        </div>
+
+
+
+        <!--lname---------------------------------------------------------------->
+        <div class="col-12 col-6">
+            <input type="text" placeholder="last name" class="form-control"
+            [(ngModel)]="model.lname" name="lname" #lname="ngModel" 
+            required minlength="2" maxlength="10">
+        </div>
+        <!-- divERR-lname -->
+        <div class="alert alert-danger" *ngIf="registerform.submitted && lname.invalid ">
+            <div *ngIf="lname.errors?.['required']">last name is required</div>
+            <div *ngIf="lname.errors?.['minlength']">min length = 4</div>
+            <div *ngIf="lname.errors?.['maxlength']">min length = 10</div>
+        </div>
+
+
+
+        <!--email---------------------------------------------------------------->
+        <div class="col-12 col-6">
+            <input type="email" placeholder="email" class="form-control"
+            [(ngModel)]="model.email" name="email" #email="ngModel" 
+            required email>
+        </div>
+        <!-- divERR-Email -->
+        <div class="alert alert-danger" *ngIf="registerform.submitted && email.invalid ">
+            <div *ngIf="email.errors?.['required']">Email is required</div>
+            <div *ngIf="email.errors?.['email']">Invalid Email</div>
+        </div>
+        
+
+
+        <!-- pass------------------------------------------------------------------->
+        <div class="col-12 col-6">
+            <input type="password" placeholder="password" class="form-control"
+            [(ngModel)]="model.password" name="password" #password="ngModel" 
+            required minlength="5">
+        </div>
+        <!-- divERR-Pass -->
+        <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || registerform.submitted )">
+            <div *ngIf="password.errors?.['required']">password is required</div>
+            <div *ngIf="password.errors?.['minlength']">min length = 5</div>
+        </div>
+
+
+        <!-- age------------------------------------------------------------------->
+        <div class="col-12 col-6">
+            <input type="number" placeholder="age" class="form-control"
+            [(ngModel)]="model.age" name="age" #age="ngModel" 
+            required min="20" max="60">
+        </div>
+        <!-- divERR-age -->
+        <div class="alert alert-danger" *ngIf="registerform.submitted && age.invalid ">
+            <div *ngIf="age.errors?.['required']">age is required</div>
+            <div *ngIf="age.errors?.['min']">min age = 20</div>
+            <div *ngIf="age.errors?.['max']">max age = 60</div>
+        </div>
+
+
+        <!-- gender------------------------------------------------------------------->
+        <div class="input-group">
+            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" 
+            [(ngModel)]="model.gender" name="gender" #gender="ngModel" 
+             required >
+              <option selected disabled value="null" >gender...</option>
+              <option value="male">male</option>
+              <option value="female">female</option>
+            </select>
+        </div>
+        <!-- divERR-gender -->
+        <div class="alert alert-danger" *ngIf="registerform.submitted && gender.invalid ">
+            <div *ngIf="gender.errors?.['required']">gender is required</div>
+        </div>
+
+
+        <!-- phone------------------------------------------------------------------->
+        <div class="col-12 col-6">
+            <input type="text" placeholder="phone" class="form-control"
+            [(ngModel)]="model.phone" name="phone" #phone="ngModel" 
+            required minlength="11">
+        </div>
+        <!-- divERR-phone -->
+        <div class="alert alert-danger" *ngIf="registerform.submitted && phone.invalid ">
+            <div *ngIf="phone.errors?.['required']">phone is required</div>
+            <div *ngIf="phone.errors?.['minlength']">min length = 11</div>
+        </div>
+
+
+        <!-- address------------------------------------------------------------------->
+        <div class="col-12 col-6">
+            <input type="text" placeholder="adress" class="form-control"
+            [(ngModel)]="model.addresses" name="addresses" #addresses="ngModel" 
+            required>
+        </div>
+        <!-- divERR-adress -->
+        <div class="alert alert-danger" *ngIf="registerform.submitted && addresses.invalid ">
+            <div *ngIf="addresses.errors?.['required']">address is required</div>
+        </div>
+
+
+
+
+        <div class="col-12 col-6">
+            <button class="btn btn-primary">submit</button>
+        </div>
     </div>
-    </div>
+</form>

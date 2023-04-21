@@ -41,6 +41,10 @@ updateImage(obj:any):Observable<any>{
     return this.http.post(`${this.baseUrl}user/login` , data)
   }
 
+  register(data:any):Observable<any>{
+    return this.http.post(`${this.baseUrl}user/register` , data)
+  }
+
 
 
   // profile(data: any):Observable<any>{
